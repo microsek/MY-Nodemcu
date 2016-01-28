@@ -1,5 +1,6 @@
 WRITEKEY="19LG5I46KAQ92ZX0"    -- set your thingspeak.com key
 -- Pin
+-- setpin 
 gaspin = 8
 lightpin=7  
 flow_pin = 1
