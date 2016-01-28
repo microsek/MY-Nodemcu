@@ -1,0 +1,22 @@
+timer_id=1
+ap_name="microsekasus"
+ap_password="qwertyuiop"
+wifi.setmode(wifi.STATION)
+wifi.sta.config(ap_name,ap_password)
+wifi.sta.connect()
+loopconnect=0
+tmr.alarm(timer_id,2000,1,function()
+    if (wifi.sta.getip()==nill and loopconnect<20) then
+        print("Wait ip from accress point..")
+        loopconnect=loopconnect+1
+    else
+        tmr.stop(timer_id)
+        if(loopconnect<20)then
+            print("IP=",wifi.sta.getip())
+            dofile("mqtt.lua")
+        else
+            print("Can't get ip")
+        end
+    end
+    
+end)
